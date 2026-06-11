@@ -52,6 +52,7 @@
 #include "memory_map.h"
 #include "t4nsc_ucode.h"
 #include "nsc_driver.h"
+#include "kv_cmd.h"
 
 unsigned int storageCapacity_L;
 T4REGS chCtlReg[USER_CHANNELS];
@@ -70,6 +71,8 @@ void InitFTL()
 	InitGcVictimMap();
 
 	storageCapacity_L = (MB_PER_SSD - (MB_PER_MIN_FREE_BLOCK_SPACE + mbPerbadBlockSpace + MB_PER_OVER_PROVISION_BLOCK_SPACE)) * ((1024*1024) / BYTES_PER_NVME_BLOCK);
+
+	InitKV();
 
 	xil_printf("[ storage capacity %d MB ]\r\n", storageCapacity_L / ((1024*1024) / BYTES_PER_NVME_BLOCK));
 	xil_printf("[ ftl configuration complete. ]\r\n");

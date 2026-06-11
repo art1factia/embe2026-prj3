@@ -59,6 +59,7 @@
 
 #include "../ftl_config.h"
 #include "../request_transform.h"
+#include "../kv_cmd.h"
 
 void handle_nvme_io_read(unsigned int cmdSlotTag, NVME_IO_COMMAND *nvmeIOCmd)
 {
